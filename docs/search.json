@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Customer Segmentation using RFM Analysis and K-Means Clustering",
+    "section": "",
+    "text": "Important\n\n\n\nThe Project 100% completed and fully functional but the detailed case study and walkthrough on this Quarto site are being finalized — coming in the next 1–2 days."
+  },
+  {
+    "objectID": "index.html#objective",
+    "href": "index.html#objective",
+    "title": "Customer Segmentation using RFM Analysis and K-Means Clustering",
+    "section": "Objective",
+    "text": "Objective\nTransform raw transaction data into actionable customer segments for targeted marketing campaigns."
+  },
+  {
+    "objectID": "index.html#methodology",
+    "href": "index.html#methodology",
+    "title": "Customer Segmentation using RFM Analysis and K-Means Clustering",
+    "section": "Methodology",
+    "text": "Methodology\n\nCalculated Recency, Frequency, Monetary (RFM) scores\n\nApplied log transformation + standardization to handle skewness\n\nDetermined optimal number of clusters using Elbow Method and Silhouette Score\n\nTrained K-Means and interpreted resulting segments"
+  },
+  {
+    "objectID": "index.html#results",
+    "href": "index.html#results",
+    "title": "Customer Segmentation using RFM Analysis and K-Means Clustering",
+    "section": "Results",
+    "text": "Results\n\nOptimal number of clusters: 6\n\nClear, business-friendly segment profiles identified"
+  },
+  {
+    "objectID": "index.html#customer-segments",
+    "href": "index.html#customer-segments",
+    "title": "Customer Segmentation using RFM Analysis and K-Means Clustering",
+    "section": "Customer Segments",
+    "text": "Customer Segments\n\n\n\n\n\n\n\n\n\nSegment\n% of Customers\nKey Traits\nRecommended Action\n\n\n\n\nChampions\n8 %\nRecent, frequent, high spend\nReward, cross-sell\n\n\nLoyal Customers\n22 %\nFrequent, medium-high spend\nUpsell, loyalty program\n\n\nAt-Risk\n15 %\nHigh past spend, long time inactive\nWin-back campaign\n\n\nHibernating\n30 %\nLow frequency & monetary\nRe-engagement offers\n\n\nNew Customers\n12 %\nVery recent, low frequency\nOnboarding, education\n\n\nLost\n13 %\nVery long inactive, low spend\nMinimal effort or ignore\n\n\n\nTech Stack: Python • Pandas • Scikit-learn • Seaborn • Plotly"
+  }
+]
