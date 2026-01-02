@@ -1,17 +1,12 @@
 ---
 title: "Customer Segmentation using RFM Analysis and K-Means Clustering"
-date: "2025-10-15"
-categories: [Machine Learning, Portofolio]
-image: sil-plot.png
-description: Segmented xx customers into x actionable groups using RFM + K-Means, unlocking clear retention and re-engagement strategies.
 ---
 
 ::: {.callout-important}
-The Project 100% completed and fully functional but the
-detailed case study and walkthrough on this Quarto site are being finalized — coming in the next 1–2 days.
+The coding phase is officially finished! I’m now working on turning the insights and results from this repo into a full-length article. In the meantime, feel free to check out the source code and documentation right [here](https://github.com/daffadaniel/02-RFMAnalysis).
 :::
 
-## Objective
+<!-- ## Objective
 Transform raw transaction data into actionable customer segments for targeted marketing campaigns.
 
 ## Methodology
@@ -26,7 +21,7 @@ Transform raw transaction data into actionable customer segments for targeted ma
 
 <!-- ![RFM 3D Scatter Plot with Clusters](images/rfm_3d_clusters.png)
 ![Segment Characteristics Heatmap](images/rfm_heatmap.png) -->
-
+<!-- 
 ## Customer Segments
 
 | Segment          | % of Customers | Key Traits                          | Recommended Action             |
@@ -38,4 +33,4 @@ Transform raw transaction data into actionable customer segments for targeted ma
 | New Customers    | 12 %           | Very recent, low frequency          | Onboarding, education          |
 | Lost             | 13 %           | Very long inactive, low spend       | Minimal effort or ignore       |
 
-**Tech Stack:** Python • Pandas • Scikit-learn • Seaborn • Plotly
+**Tech Stack:** Python • Pandas • Scikit-learn • Seaborn • Plotly --> 

@@ -1,37 +1,69 @@
 [
   {
+    "objectID": "Notebooks/RFM_Kmeans.html",
+    "href": "Notebooks/RFM_Kmeans.html",
+    "title": "RFM Segmentation",
+    "section": "",
+    "text": "title: “RFM Analysis” format: html",
+    "crumbs": [
+      "Home",
+      "Project Detail",
+      "Complete Notebook"
+    ]
+  },
+  {
+    "objectID": "Notebooks/RFM_Kmeans.html#modelling-workflow",
+    "href": "Notebooks/RFM_Kmeans.html#modelling-workflow",
+    "title": "RFM Segmentation",
+    "section": "#  2. Modelling Workflow ",
+    "text": "#  2. Modelling Workflow",
+    "crumbs": [
+      "Home",
+      "Project Detail",
+      "Complete Notebook"
+    ]
+  },
+  {
+    "objectID": "Notebooks/RFM_Kmeans.html#data-description",
+    "href": "Notebooks/RFM_Kmeans.html#data-description",
+    "title": "RFM Segmentation",
+    "section": "Data Description",
+    "text": "Data Description\n\nInvoiceNo: Invoice number. Nominal, a 6-digit integral number uniquely assigned to each transaction. \nStockCode: Product (item) code. Nominal, a 5-digit integral number uniquely assigned to each distinct product. \nDescription: Product (item) name. Nominal. \nQuantity: The quantities of each product (item) per transaction. Numeric. \nInvoiceDate: Invoice Date and time. Numeric, the day and time when each transaction was generated. \nPrice: Unit price. Numeric, Product price per unit in sterling. \nCustomer ID: Customer number. Nominal, a 5-digit integral number uniquely assigned to each customer. \nCountry: Country name. Nominal, the name of the country where each customer resides.",
+    "crumbs": [
+      "Home",
+      "Project Detail",
+      "Complete Notebook"
+    ]
+  },
+  {
+    "objectID": "Notebooks/RFM_Kmeans.html#import-data",
+    "href": "Notebooks/RFM_Kmeans.html#import-data",
+    "title": "RFM Segmentation",
+    "section": "## Import Data",
+    "text": "## Import Data\n\nfilepath = \"data/raw/online+retail.zip\"\n\nwith zipfile.ZipFile(filepath, 'r') as z:\n    print(z.namelist())\n\n['Online Retail.xlsx']\n\n\n\nwith zipfile.ZipFile(filepath, \"r\") as z:\n    z.extractall(\"data/raw/unzipped\")\n\n\ndf1 = pd.read_excel('data/raw/unzipped/Online Retail.xlsx')\n\n\ndisplay(df1)\n\n\n\n\n\n\n\n\nInvoiceNo\nStockCode\nDescription\nQuantity\nInvoiceDate\nUnitPrice\nCustomerID\nCountry\n\n\n\n\n0\n536365\n85123A\nWHITE HANGING HEART T-LIGHT HOLDER\n6\n2010-12-01 08:26:00\n2.55\n17850.0\nUnited Kingdom\n\n\n1\n536365\n71053\nWHITE METAL LANTERN\n6\n2010-12-01 08:26:00\n3.39\n17850.0\nUnited Kingdom\n\n\n2\n536365\n84406B\nCREAM CUPID HEARTS COAT HANGER\n8\n2010-12-01 08:26:00\n2.75\n17850.0\nUnited Kingdom\n\n\n3\n536365\n84029G\nKNITTED UNION FLAG HOT WATER BOTTLE\n6\n2010-12-01 08:26:00\n3.39\n17850.0\nUnited Kingdom\n\n\n4\n536365\n84029E\nRED WOOLLY HOTTIE WHITE HEART.\n6\n2010-12-01 08:26:00\n3.39\n17850.0\nUnited Kingdom\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n541904\n581587\n22613\nPACK OF 20 SPACEBOY NAPKINS\n12\n2011-12-09 12:50:00\n0.85\n12680.0\nFrance\n\n\n541905\n581587\n22899\nCHILDREN'S APRON DOLLY GIRL\n6\n2011-12-09 12:50:00\n2.10\n12680.0\nFrance\n\n\n541906\n581587\n23254\nCHILDRENS CUTLERY DOLLY GIRL\n4\n2011-12-09 12:50:00\n4.15\n12680.0\nFrance\n\n\n541907\n581587\n23255\nCHILDRENS CUTLERY CIRCUS PARADE\n4\n2011-12-09 12:50:00\n4.15\n12680.0\nFrance\n\n\n541908\n581587\n22138\nBAKING SET 9 PIECE RETROSPOT\n3\n2011-12-09 12:50:00\n4.95\n12680.0\nFrance\n\n\n\n\n541909 rows × 8 columns\n\n\n\n\nfilepath = \"data/raw/online+retail+ii.zip\"\n\nwith zipfile.ZipFile(filepath, 'r') as z:\n    print(z.namelist())\n\n['online_retail_II.xlsx']\n\n\n\nwith zipfile.ZipFile(filepath, \"r\") as z:\n    z.extractall(\"data/raw/unzipped\")\n\n\ndf2 = pd.read_excel(\"data/raw/unzipped/online_retail_II.xlsx\")\n\n\ndisplay(df2)\n\n\n\n\n\n\n\n\nInvoice\nStockCode\nDescription\nQuantity\nInvoiceDate\nPrice\nCustomer ID\nCountry\n\n\n\n\n0\n489434\n85048\n15CM CHRISTMAS GLASS BALL 20 LIGHTS\n12\n2009-12-01 07:45:00\n6.95\n13085.0\nUnited Kingdom\n\n\n1\n489434\n79323P\nPINK CHERRY LIGHTS\n12\n2009-12-01 07:45:00\n6.75\n13085.0\nUnited Kingdom\n\n\n2\n489434\n79323W\nWHITE CHERRY LIGHTS\n12\n2009-12-01 07:45:00\n6.75\n13085.0\nUnited Kingdom\n\n\n3\n489434\n22041\nRECORD FRAME 7\" SINGLE SIZE\n48\n2009-12-01 07:45:00\n2.10\n13085.0\nUnited Kingdom\n\n\n4\n489434\n21232\nSTRAWBERRY CERAMIC TRINKET BOX\n24\n2009-12-01 07:45:00\n1.25\n13085.0\nUnited Kingdom\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n525456\n538171\n22271\nFELTCRAFT DOLL ROSIE\n2\n2010-12-09 20:01:00\n2.95\n17530.0\nUnited Kingdom\n\n\n525457\n538171\n22750\nFELTCRAFT PRINCESS LOLA DOLL\n1\n2010-12-09 20:01:00\n3.75\n17530.0\nUnited Kingdom\n\n\n525458\n538171\n22751\nFELTCRAFT PRINCESS OLIVIA DOLL\n1\n2010-12-09 20:01:00\n3.75\n17530.0\nUnited Kingdom\n\n\n525459\n538171\n20970\nPINK FLORAL FELTCRAFT SHOULDER BAG\n2\n2010-12-09 20:01:00\n3.75\n17530.0\nUnited Kingdom\n\n\n525460\n538171\n21931\nJUMBO STORAGE BAG SUKI\n2\n2010-12-09 20:01:00\n1.95\n17530.0\nUnited Kingdom\n\n\n\n\n525461 rows × 8 columns\n\n\n\nCheck Data Type\n\ndf1.dtypes\n\nInvoiceNo              object\nStockCode              object\nDescription            object\nQuantity                int64\nInvoiceDate    datetime64[ns]\nUnitPrice             float64\nCustomerID            float64\nCountry                object\ndtype: object\n\n\n\ndf1['CustomerID'] = df1['CustomerID'].astype(object)\n\nCheck for duplicates\n\ndf1[df1.duplicated(keep='first')]\n\n\n\n\n\n\n\n\nInvoiceNo\nStockCode\nDescription\nQuantity\nInvoiceDate\nUnitPrice\nCustomerID\nCountry\n\n\n\n\n517\n536409\n21866\nUNION JACK FLAG LUGGAGE TAG\n1\n2010-12-01 11:45:00\n1.25\n17908.0\nUnited Kingdom\n\n\n527\n536409\n22866\nHAND WARMER SCOTTY DOG DESIGN\n1\n2010-12-01 11:45:00\n2.10\n17908.0\nUnited Kingdom\n\n\n537\n536409\n22900\nSET 2 TEA TOWELS I LOVE LONDON\n1\n2010-12-01 11:45:00\n2.95\n17908.0\nUnited Kingdom\n\n\n539\n536409\n22111\nSCOTTIE DOG HOT WATER BOTTLE\n1\n2010-12-01 11:45:00\n4.95\n17908.0\nUnited Kingdom\n\n\n555\n536412\n22327\nROUND SNACK BOXES SET OF 4 SKULLS\n1\n2010-12-01 11:49:00\n2.95\n17920.0\nUnited Kingdom\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n541675\n581538\n22068\nBLACK PIRATE TREASURE CHEST\n1\n2011-12-09 11:34:00\n0.39\n14446.0\nUnited Kingdom\n\n\n541689\n581538\n23318\nBOX OF 6 MINI VINTAGE CRACKERS\n1\n2011-12-09 11:34:00\n2.49\n14446.0\nUnited Kingdom\n\n\n541692\n581538\n22992\nREVOLVER WOODEN RULER\n1\n2011-12-09 11:34:00\n1.95\n14446.0\nUnited Kingdom\n\n\n541699\n581538\n22694\nWICKER STAR\n1\n2011-12-09 11:34:00\n2.10\n14446.0\nUnited Kingdom\n\n\n541701\n581538\n23343\nJUMBO BAG VINTAGE CHRISTMAS\n1\n2011-12-09 11:34:00\n2.08\n14446.0\nUnited Kingdom\n\n\n\n\n5268 rows × 8 columns\n\n\n\n\nThere are 5268 rows of duplicated data\n\n\ndf1.drop_duplicates(keep='first', inplace=True)\n\n\ndf1.duplicated().sum()\n\nnp.int64(0)",
+    "crumbs": [
+      "Home",
+      "Project Detail",
+      "Complete Notebook"
+    ]
+  },
+  {
+    "objectID": "Notebooks/RFM_Kmeans.html#ranking-method",
+    "href": "Notebooks/RFM_Kmeans.html#ranking-method",
+    "title": "RFM Segmentation",
+    "section": "6.1 Ranking Method",
+    "text": "6.1 Ranking Method\n\nrfm_rank = data_rfm_scaled.copy()\n\n\nAssume the company can only afford 5 marketing strategies, therefore maximum number of cluster would be 5.\nWe will rank each RFM column the data into 5 (binning).\n\n\ndef binning_rfm(df):\n    \"\"\"\n    Function for binning the data for making ranking method\n\n    Parameter\n    ---------\n    df : pandas dataframe\n         dataframe input for binning method\n\n    Return\n    ------\n    df : pandas dataframe\n         output binned dataframe\n    \"\"\"\n    # Calculate quantiles for each variable\n    quantiles = df.quantile(q=[0.2, 0.4, 0.6, 0.8])\n\n    # Create bins for each variable\n    r_bins = [-np.inf] + list(quantiles['Recency']) + [np.inf]\n    f_bins = [-np.inf] + list(quantiles['Frequency']) + [np.inf]\n    m_bins = [-np.inf] + list(quantiles['Monetary']) + [np.inf]\n\n    # Create labels for the bins\n    labels = [1, 2, 3, 4, 5]\n\n    # label for recency (lower recency, higher ranking)\n    labels_r = [5, 4, 3, 2, 1]\n\n    # Bin each variable into five groups\n    df['R_Group'] = pd.cut(df['Recency'], bins=r_bins, labels=labels_r).astype(int)\n    df['F_Group'] = pd.cut(df['Frequency'], bins=f_bins, labels=labels).astype(int)\n    df['M_Group'] = pd.cut(df['Monetary'], bins=m_bins, labels=labels).astype(int)\n\n    # RFM score with average\n    df['RFM_Score'] = np.round((df['R_Group']+df['F_Group']+df['M_Group'])/3,2)\n\n    return df\n\n\nrfm_rank = binning_rfm(rfm_rank)\n\n\nrfm_rank.head()\n\n\n\n\n\n\n\n\nRecency\nTenure\nFrequency\nMonetary\nR_Group\nF_Group\nM_Group\nRFM_Score\n\n\nCustomerID\n\n\n\n\n\n\n\n\n\n\n\n\n12347\n0.005362\n0.983827\n0.714286\n0.840472\n5\n5\n5\n5.00\n\n\n12348\n0.201072\n0.760108\n0.285714\n0.349685\n2\n3\n4\n3.00\n\n\n12352\n0.096515\n0.700809\n0.857143\n0.488127\n3\n5\n5\n4.33\n\n\n12356\n0.058981\n0.814016\n0.142857\n0.547775\n4\n2\n5\n3.67\n\n\n12358\n0.002681\n0.401617\n0.000000\n0.226795\n5\n1\n3\n3.00\n\n\n\n\n\n\n\n\nrfm_rank.dtypes\n\nRecency      float64\nTenure       float64\nFrequency    float64\nMonetary     float64\nR_Group        int64\nF_Group        int64\nM_Group        int64\nRFM_Score    float64\ndtype: object",
+    "crumbs": [
+      "Home",
+      "Project Detail",
+      "Complete Notebook"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Customer Segmentation using RFM Analysis and K-Means Clustering",
     "section": "",
-    "text": "Important\n\n\n\nThe Project 100% completed and fully functional but the detailed case study and walkthrough on this Quarto site are being finalized — coming in the next 1–2 days."
-  },
-  {
-    "objectID": "index.html#objective",
-    "href": "index.html#objective",
-    "title": "Customer Segmentation using RFM Analysis and K-Means Clustering",
-    "section": "Objective",
-    "text": "Objective\nTransform raw transaction data into actionable customer segments for targeted marketing campaigns."
-  },
-  {
-    "objectID": "index.html#methodology",
-    "href": "index.html#methodology",
-    "title": "Customer Segmentation using RFM Analysis and K-Means Clustering",
-    "section": "Methodology",
-    "text": "Methodology\n\nCalculated Recency, Frequency, Monetary (RFM) scores\n\nApplied log transformation + standardization to handle skewness\n\nDetermined optimal number of clusters using Elbow Method and Silhouette Score\n\nTrained K-Means and interpreted resulting segments"
-  },
-  {
-    "objectID": "index.html#results",
-    "href": "index.html#results",
-    "title": "Customer Segmentation using RFM Analysis and K-Means Clustering",
-    "section": "Results",
-    "text": "Results\n\nOptimal number of clusters: 6\n\nClear, business-friendly segment profiles identified"
-  },
-  {
-    "objectID": "index.html#customer-segments",
-    "href": "index.html#customer-segments",
-    "title": "Customer Segmentation using RFM Analysis and K-Means Clustering",
-    "section": "Customer Segments",
-    "text": "Customer Segments\n\n\n\n\n\n\n\n\n\nSegment\n% of Customers\nKey Traits\nRecommended Action\n\n\n\n\nChampions\n8 %\nRecent, frequent, high spend\nReward, cross-sell\n\n\nLoyal Customers\n22 %\nFrequent, medium-high spend\nUpsell, loyalty program\n\n\nAt-Risk\n15 %\nHigh past spend, long time inactive\nWin-back campaign\n\n\nHibernating\n30 %\nLow frequency & monetary\nRe-engagement offers\n\n\nNew Customers\n12 %\nVery recent, low frequency\nOnboarding, education\n\n\nLost\n13 %\nVery long inactive, low spend\nMinimal effort or ignore\n\n\n\nTech Stack: Python • Pandas • Scikit-learn • Seaborn • Plotly"
+    "text": "Important\n\n\n\nThe coding phase is officially finished! I’m now working on turning the insights and results from this repo into a full-length article. In the meantime, feel free to check out the source code and documentation right here."
   }
 ]
