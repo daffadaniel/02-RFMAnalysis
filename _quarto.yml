@@ -32,6 +32,7 @@ website:
     search: true
     contents:
       - text: "Main Article" 
+        file: index.qmd
       - section: "Project Detail"
         contents:
           - text: "Complete Notebook"
